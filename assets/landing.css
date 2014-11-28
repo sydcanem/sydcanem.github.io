@@ -1,0 +1,27 @@
+@import url(http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css);
+
+.social a {
+	display     : inline-block;
+	text-align  : center;
+	width       : 48px;
+	height      : 48px;
+	line-height : 48px;
+}
+
+.social i {
+	font-size  : 2em;
+	color      : #aaa;
+	transition : transform 250ms ease;
+	transform  : scale(0.9);
+	display    : inline-block;
+}
+
+.social a:hover i {
+	font-size  : 2em;
+	transition : transform 100ms ease;
+	transform  : scale(1);
+}
+
+.social a:hover i:before {
+    content: "\f233";
+}
