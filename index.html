@@ -88,6 +88,12 @@
                     return 34 * (i+1)
                 }
             });
+
+            var lastChild = textPromised.children[textPromised.children.length - 1]
+            lastChild.finished.then(function () {
+                var letters2 = document.querySelector('.hello .line2');
+                letters2.classList.add('blinking');
+            });
         </script>
     </body>
 </html>
