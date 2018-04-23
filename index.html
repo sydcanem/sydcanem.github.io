@@ -35,7 +35,8 @@
             var letters1 = document.querySelector('.hello .letters1')
             var letters2 = document.querySelector('.hello .letters2');
             
-            var textPromised = anime.timeline({loop: false}).add({
+            var textPromised = anime.timeline({loop: false})
+            .add({
                 targets: '.hello .line1',
                 scaleY: [0,1],
                 opacity: [0.5,1],
@@ -54,7 +55,7 @@
                 opacity: [0,1],
                 easing: "linear",
                 duration: 200,
-                offset: '-=200',
+                offset: '-=86   ',
                 delay: function(el, i) {
                     return 34 * (i+1)
                 }
@@ -82,7 +83,7 @@
                 opacity: [0,1],
                 easing: "linear",
                 duration: 200,
-                offset: '-=300',
+                offset: '-=269',
                 delay: function(el, i) {
                     return 34 * (i+1)
                 }
