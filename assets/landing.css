@@ -1,27 +1,63 @@
 @import url(http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css);
 
 .social a {
-	display     : inline-block;
-	text-align  : center;
-	width       : 48px;
-	height      : 48px;
-	line-height : 48px;
+  display: inline-block;
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
 }
 
 .social i {
-	font-size  : 2em;
-	color      : #aaa;
-	transition : transform 250ms ease;
-	transform  : scale(0.9);
-	display    : inline-block;
+  font-size: 2em;
+  color: #aaa;
+  transition: transform 250ms ease;
+  transform: scale(0.9);
+  display: inline-block;
 }
 
 .social a:hover i {
-	font-size  : 2em;
-	transition : transform 100ms ease;
-	transform  : scale(1);
+  font-size: 2em;
+  transition: transform 100ms ease;
+  transform: scale(1);
 }
 
 .social a:hover i:before {
-    content: "\f233";
+  content: "\f233";
+}
+
+.hello {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 6em;
+}
+
+.hello .text-wrapper {
+  position: relative;
+  display: block;
+}
+
+.hello .line {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 5px;
+  background-color: #000;
+  transform-origin: 0 50%;
+}
+
+.hello .line1,
+.hello .line2 {
+  top: 0;
+  left: 0;
+}
+
+.hello .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.hello .letters2 .letter {
+  opacity: 0;
 }

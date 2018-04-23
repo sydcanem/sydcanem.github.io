@@ -9,10 +9,84 @@
         <link href="assets/landing.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-    	<div class="social">
-    		<a href="https://github.com/sydcanem">
-    			<i class="ion-social-github-outline"></i>
-    		</a>
-    	</div>
+        <h1 class="hello">
+            <span class="text-wrapper">
+                <span class="line line1"></span>
+                <span class="letters letters1">Hi</span>
+            </span>
+            <span class="text-wrapper">
+                <span class="line line2"></span>
+                <span class="letters letters2">There!</span>
+            </span>
+        </h1>
+          
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script>
+            var elements = document.querySelectorAll('.hello .letters1');
+            Array.prototype.forEach.call(elements, function(el, i){
+                el.innerHTML = el.textContent.replace(/([^\x00-\x80]|\w|\!)/g, "<span class='letter'>$&</span>");
+            });
+
+            var elements = document.querySelectorAll('.hello .letters2');
+            Array.prototype.forEach.call(elements, function(el, i){
+                el.innerHTML = el.textContent.replace(/([^\x00-\x80]|\w|\!)/g, "<span class='letter'>$&</span>");
+            });
+
+            var letters1 = document.querySelector('.hello .letters1')
+            var letters2 = document.querySelector('.hello .letters2');
+            
+            var textPromised = anime.timeline({loop: false}).add({
+                targets: '.hello .line1',
+                scaleY: [0,1],
+                opacity: [0.5,1],
+                easing: "linear",
+                duration: 100
+            })
+            .add({
+                targets: '.hello .line1',
+                translateX: [0,letters1.offsetWidth],
+                easing: "linear",
+                duration: 200,
+                delay: 100
+            })
+            .add({
+                targets: '.letters1 .letter',
+                opacity: [0,1],
+                easing: "linear",
+                duration: 200,
+                offset: '-=200',
+                delay: function(el, i) {
+                    return 34 * (i+1)
+                }
+            })
+            .add({
+                targets: '.hello .line1',
+                opacity: [1,0.0],
+                duration: 10
+            })
+            .add({
+                targets: '.hello .line2',
+                opacity: [0.0,1],
+                duration: 10,
+                delay: 100
+            })
+            .add({
+                targets: '.hello .line2',
+                translateX: [0,letters2.offsetWidth],
+                easing: "linear",
+                duration: 300,
+                delay: 100
+            })
+            .add({
+                targets: '.letters2 .letter',
+                opacity: [0,1],
+                easing: "linear",
+                duration: 200,
+                offset: '-=300',
+                delay: function(el, i) {
+                    return 34 * (i+1)
+                }
+            });
+        </script>
     </body>
 </html>
