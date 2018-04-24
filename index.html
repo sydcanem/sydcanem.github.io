@@ -28,7 +28,7 @@
             </span>
             <span class="text-wrapper">
                 <span class="line line5"></span>
-                <span class="letters letters5">Stay tuned.</span>
+                <span class="letters letters5">and random stuffs.</span>
             </span>
         </h1>
           
@@ -226,14 +226,14 @@
                     targets: '.hello .line5',
                     translateX: [0,letters5.offsetWidth],
                     easing: "linear",
-                    duration: 250,
+                    duration: 450,
                     delay: 100
                 })
                 .add({
                     targets: '.letters5 .letter',
                     opacity: [0,1],
                     easing: "easeOutExpo",
-                    duration: 200,
+                    duration: 400,
                     offset: '-=' + letters5.offsetWidth,
                     delay: function(el, i) {
                         return 25 * (i+1)
