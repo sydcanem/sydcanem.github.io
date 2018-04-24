@@ -11,7 +11,7 @@
     <body>
         <h1 class="hello">
             <span class="text-wrapper">
-                <span class="line line1"></span>
+                <span class="line line1 blinking"></span>
                 <span class="letters letters1">Hi</span>
             </span>
             <span class="text-wrapper">
@@ -35,65 +35,63 @@
             var letters1 = document.querySelector('.hello .letters1')
             var letters2 = document.querySelector('.hello .letters2');
             
-            var textPromised = anime.timeline({loop: false})
-            .add({
-                targets: '.hello .line1',
-                scaleY: [0,1],
-                opacity: [0.5,1],
-                easing: "linear",
-                duration: 100
-            })
-            .add({
-                targets: '.hello .line1',
-                translateX: [0,letters1.offsetWidth],
-                easing: "linear",
-                duration: 200,
-                delay: 100
-            })
-            .add({
-                targets: '.letters1 .letter',
-                opacity: [0,1],
-                easing: "linear",
-                duration: 200,
-                offset: '-=86   ',
-                delay: function(el, i) {
-                    return 34 * (i+1)
-                }
-            })
-            .add({
-                targets: '.hello .line1',
-                opacity: [1,0.0],
-                duration: 10
-            })
-            .add({
-                targets: '.hello .line2',
-                opacity: [0.0,1],
-                duration: 10,
-                delay: 100
-            })
-            .add({
-                targets: '.hello .line2',
-                translateX: [0,letters2.offsetWidth],
-                easing: "linear",
-                duration: 300,
-                delay: 100
-            })
-            .add({
-                targets: '.letters2 .letter',
-                opacity: [0,1],
-                easing: "linear",
-                duration: 200,
-                offset: '-=269',
-                delay: function(el, i) {
-                    return 34 * (i+1)
-                }
-            });
+            setTimeout(() => {
+                var line1 = document.querySelector('.hello .line1');
+                line1.classList.remove('blinking');
 
-            var afterText = textPromised.children[textPromised.children.length - 2]
-            afterText.finished.then(function () {
-                var letters2 = document.querySelector('.hello .line2');
-                letters2.classList.add('blinking');
-            });
+                var textPromised = anime.timeline({loop: false})
+                .add({
+                    targets: '.hello .line1',
+                    translateX: [0,letters1.offsetWidth],
+                    easing: "linear",
+                    duration: 200,
+                    delay: 100
+                })
+                .add({
+                    targets: '.letters1 .letter',
+                    opacity: [0,1],
+                    easing: "linear",
+                    duration: 200,
+                    offset: '-=86   ',
+                    delay: function(el, i) {
+                        return 34 * (i+1)
+                    }
+                })
+                .add({
+                    targets: '.hello .line1',
+                    opacity: [1,0.0],
+                    duration: 10
+                })
+                .add({
+                    targets: '.hello .line2',
+                    opacity: [0.0,1],
+                    duration: 10,
+                    delay: 100
+                })
+                .add({
+                    targets: '.hello .line2',
+                    translateX: [0,letters2.offsetWidth],
+                    easing: "linear",
+                    duration: 300,
+                    delay: 100
+                })
+                .add({
+                    targets: '.letters2 .letter',
+                    opacity: [0,1],
+                    easing: "linear",
+                    duration: 200,
+                    offset: '-=269',
+                    delay: function(el, i) {
+                        return 34 * (i+1)
+                    }
+                });
+
+                var afterText = textPromised.children[textPromised.children.length - 2]
+                afterText.finished.then(function () {
+                    var line2 = document.querySelector('.hello .line2');
+                    line2.classList.add('blinking');
+                });
+            }, 2000);
         </script>
     </body>
 </html>
