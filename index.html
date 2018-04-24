@@ -89,8 +89,8 @@
                 }
             });
 
-            var lastChild = textPromised.children[textPromised.children.length - 1]
-            lastChild.finished.then(function () {
+            var afterText = textPromised.children[textPromised.children.length - 2]
+            afterText.finished.then(function () {
                 var letters2 = document.querySelector('.hello .line2');
                 letters2.classList.add('blinking');
             });
