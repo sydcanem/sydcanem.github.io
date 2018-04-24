@@ -18,6 +18,18 @@
                 <span class="line line2"></span>
                 <span class="letters letters2">I'm James</span>
             </span>
+            <span class="text-wrapper">
+                <span class="line line3"></span>
+                <span class="letters letters3">I blog about</span>
+            </span>
+            <span class="text-wrapper">
+                <span class="line line4"></span>
+                <span class="letters letters4">distributed systems</span>
+            </span>
+            <span class="text-wrapper">
+                <span class="line line5"></span>
+                <span class="letters letters5">Stay tuned.</span>
+            </span>
         </h1>
           
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
@@ -32,14 +44,32 @@
                 el.innerHTML = el.textContent.replace(/([^\x00-\x80]|\w|\!|\')/g, "<span class='letter'>$&</span>");
             });
 
+            var elements = document.querySelectorAll('.hello .letters3');
+            Array.prototype.forEach.call(elements, function(el, i){
+                el.innerHTML = el.textContent.replace(/([^\x00-\x80]|\w|\!|\')/g, "<span class='letter'>$&</span>");
+            });
+
+            var elements = document.querySelectorAll('.hello .letters4');
+            Array.prototype.forEach.call(elements, function(el, i){
+                el.innerHTML = el.textContent.replace(/([^\x00-\x80]|\w|\!|\')/g, "<span class='letter'>$&</span>");
+            });
+
+            var elements = document.querySelectorAll('.hello .letters5');
+            Array.prototype.forEach.call(elements, function(el, i){
+                el.innerHTML = el.textContent.replace(/([^\x00-\x80]|\w|\!|\.)/g, "<span class='letter'>$&</span>");
+            });
+
             var letters1 = document.querySelector('.hello .letters1')
             var letters2 = document.querySelector('.hello .letters2');
-            
-            setTimeout(() => {
-                var line1 = document.querySelector('.hello .line1');
-                line1.classList.remove('blinking');
+            var letters3 = document.querySelector('.hello .letters3');
+            var letters4 = document.querySelector('.hello .letters4');
+            var letters5 = document.querySelector('.hello .letters5');
 
-                var letters1Promise = anime.timeline({loop: false})
+            function hi() {
+                var line = document.querySelector('.hello .line1');
+                line.classList.remove('blinking');
+
+                var text = anime.timeline({loop: false})
                 .add({
                     targets: '.hello .line1',
                     translateX: [0,letters1.offsetWidth],
@@ -56,51 +86,175 @@
                         return 25 * (i+1)
                     }
                 });
-                    
-                var afterLetters1 = letters1Promise.children[letters1Promise.children.length - 2];
+                
+                return text.children[text.children.length - 2].finished;
+            }
 
-                afterLetters1.finished.then(function () {
-                    var line1 = document.querySelector('.hello .line1');
-                    line1.classList.add('blinking');
+            function me() {
+                var line = document.querySelector('.hello .line1');
+                line.classList.add('blinking');
 
-                    var letters2Promise = anime.timeline({loop: false})
-                    .add({
-                        targets: '.hello .line1',
-                        opacity: [1,0.0],
-                        easing: "easeOutExpo",
-                        duration: 10,
-                        delay: 1250
-                    })
-                    .add({
-                        targets: '.hello .line2',
-                        opacity: [0.0,1],
-                        duration: 10,
-                        delay: 100
-                    })
-                    .add({
-                        targets: '.hello .line2',
-                        translateX: [0,letters2.offsetWidth],
-                        easing: "linear",
-                        duration: 250,
-                        delay: 100
-                    })
-                    .add({
-                        targets: '.letters2 .letter',
-                        opacity: [0,1],
-                        easing: "easeOutExpo",
-                        duration: 200,
-                        offset: '-=' + letters2.offsetWidth,
-                        delay: function(el, i) {
-                            return 25 * (i+1)
-                        }
-                    });
-
-                    var afterLetters2 = letters2Promise.children[letters2Promise.children.length - 2]
-                    afterLetters2.finished.then(function () {
-                        var line2 = document.querySelector('.hello .line2');
-                        line2.classList.add('blinking');
-                    });
+                var text = anime.timeline({loop: false})
+                .add({
+                    targets: '.hello .line1',
+                    opacity: [1,0.0],
+                    easing: "easeOutExpo",
+                    duration: 10,
+                    delay: 1250
+                })
+                .add({
+                    targets: '.hello .line2',
+                    opacity: [0.0,1],
+                    duration: 10,
+                    delay: 100
+                })
+                .add({
+                    targets: '.hello .line2',
+                    translateX: [0,letters2.offsetWidth],
+                    easing: "linear",
+                    duration: 250,
+                    delay: 100
+                })
+                .add({
+                    targets: '.letters2 .letter',
+                    opacity: [0,1],
+                    easing: "easeOutExpo",
+                    duration: 200,
+                    offset: '-=' + letters2.offsetWidth,
+                    delay: function(el, i) {
+                        return 25 * (i+1)
+                    }
                 });
+
+                return text.children[text.children.length - 2].finished;
+            }
+
+            function blog() {
+                var line = document.querySelector('.hello .line2');
+                line.classList.add('blinking');
+
+                var text = anime.timeline({loop: false})
+                .add({
+                    targets: '.hello .line2',
+                    opacity: [1,0.0],
+                    easing: "easeOutExpo",
+                    duration: 10,
+                    delay: 1000
+                })
+                .add({
+                    targets: '.hello .line3',
+                    opacity: [0.0,1],
+                    duration: 10,
+                    delay: 100
+                })
+                .add({
+                    targets: '.hello .line3',
+                    translateX: [0,letters3.offsetWidth],
+                    easing: "linear",
+                    duration: 250,
+                    delay: 100
+                })
+                .add({
+                    targets: '.letters3 .letter',
+                    opacity: [0,1],
+                    easing: "easeOutExpo",
+                    duration: 200,
+                    offset: '-=' + letters3.offsetWidth,
+                    delay: function(el, i) {
+                        return 25 * (i+1)
+                    }
+                });
+
+                return text.children[text.children.length - 2].finished;
+            }
+
+            function topic() {
+                var text = anime.timeline({loop: false})
+                .add({
+                    targets: '.hello .line3',
+                    opacity: [1,0.0],
+                    easing: "easeOutExpo",
+                    duration: 10,
+                    delay: 10
+                })
+                .add({
+                    targets: '.hello .line4',
+                    opacity: [0.0,1],
+                    duration: 10,
+                    delay: 10
+                })
+                .add({
+                    targets: '.hello .line4',
+                    translateX: [0,letters4.offsetWidth],
+                    easing: "linear",
+                    duration: 450,
+                    delay: 100
+                })
+                .add({
+                    targets: '.letters4 .letter',
+                    opacity: [0,1],
+                    easing: "easeOutExpo",
+                    duration: 400,
+                    offset: '-=' + letters4.offsetWidth,
+                    delay: function(el, i) {
+                        return 25 * (i+1)
+                    }
+                });
+
+                return text.children[text.children.length - 2].finished;
+            }
+
+            function stayTuned() {
+                var line = document.querySelector('.hello .line4');
+                line.classList.add('blinking');
+
+                var text = anime.timeline({loop: false})
+                .add({
+                    targets: '.hello .line4',
+                    opacity: [1,0.0],
+                    easing: "easeOutExpo",
+                    duration: 10,
+                    delay: 1250
+                })
+                .add({
+                    targets: '.hello .line5',
+                    opacity: [0.0,1],
+                    duration: 10,
+                    delay: 100
+                })
+                .add({
+                    targets: '.hello .line5',
+                    translateX: [0,letters5.offsetWidth],
+                    easing: "linear",
+                    duration: 250,
+                    delay: 100
+                })
+                .add({
+                    targets: '.letters5 .letter',
+                    opacity: [0,1],
+                    easing: "easeOutExpo",
+                    duration: 200,
+                    offset: '-=' + letters5.offsetWidth,
+                    delay: function(el, i) {
+                        return 25 * (i+1)
+                    }
+                });
+
+                return text.children[text.children.length - 2].finished;
+            }
+
+            function final() {
+                var line = document.querySelector('.hello .line5');
+                line.classList.add('blinking');
+            }
+            
+            setTimeout(() => {
+               hi()
+                .then(me)
+                .then(blog)
+                .then(topic)
+                .then(stayTuned)
+                .then(final);
             }, 1250);
         </script>
     </body>
