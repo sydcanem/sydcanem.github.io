@@ -44,17 +44,16 @@
                     targets: '.hello .line1',
                     translateX: [0,letters1.offsetWidth],
                     easing: "linear",
-                    duration: 200,
-                    delay: 100
+                    duration: 150
                 })
                 .add({
                     targets: '.letters1 .letter',
                     opacity: [0,1],
-                    easing: "linear",
-                    duration: 200,
-                    offset: '-=86   ',
+                    easing: "easeOutExpo",
+                    duration: 150,
+                    offset: '-=52   ',
                     delay: function(el, i) {
-                        return 34 * (i+1)
+                        return 25 * (i+1)
                     }
                 })
                 .add({
@@ -72,17 +71,17 @@
                     targets: '.hello .line2',
                     translateX: [0,letters2.offsetWidth],
                     easing: "linear",
-                    duration: 300,
+                    duration: 250,
                     delay: 100
                 })
                 .add({
                     targets: '.letters2 .letter',
                     opacity: [0,1],
-                    easing: "linear",
+                    easing: "easeOutExpo",
                     duration: 200,
-                    offset: '-=269',
+                    offset: '-=158',
                     delay: function(el, i) {
-                        return 34 * (i+1)
+                        return 25 * (i+1)
                     }
                 });
 
@@ -91,7 +90,7 @@
                     var line2 = document.querySelector('.hello .line2');
                     line2.classList.add('blinking');
                 });
-            }, 2000);
+            }, 1250);
         </script>
     </body>
 </html>
