@@ -12,7 +12,7 @@
         <h1 class="hello">
             <span class="text-wrapper">
                 <span class="line line1 blinking"></span>
-                <span class="letters letters1">hi there</span>
+                <span class="letters letters1">Hi!</span>
             </span>
             <span class="text-wrapper">
                 <span class="line line2"></span>
@@ -44,13 +44,13 @@
                     targets: '.hello .line1',
                     translateX: [0,letters1.offsetWidth],
                     easing: "linear",
-                    duration: 200
+                    duration: 150
                 })
                 .add({
                     targets: '.letters1 .letter',
                     opacity: [0,1],
                     easing: "easeOutExpo",
-                    duration: 200,
+                    duration: 100,
                     offset: '-=' + letters1.offsetWidth,
                     delay: function(el, i) {
                         return 25 * (i+1)
@@ -89,7 +89,7 @@
                         opacity: [0,1],
                         easing: "easeOutExpo",
                         duration: 200,
-                        offset: '-=244',
+                        offset: '-=' + letters2.offsetWidth,
                         delay: function(el, i) {
                             return 25 * (i+1)
                         }
